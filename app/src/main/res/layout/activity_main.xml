@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="30dp"
+        tools:ignore="UselessParent">
+
+        <EditText
+            android:id="@+id/edtTxt_url"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:ems="10"
+            android:hint="WebDav地址"
+            android:text="https://dav.jianguoyun.com/dav/"
+            tools:ignore="HardcodedText,TextFields" />
+
+        <EditText
+            android:id="@+id/edtTxt_account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:ems="10"
+            android:hint="输入WebDav账号"
+            tools:ignore="HardcodedText,TextFields" />
+
+        <EditText
+            android:id="@+id/edtTxt_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:ems="10"
+            android:hint="输入密码"
+            android:inputType="textPassword"
+            tools:ignore="HardcodedText,TextFields" />
+
+        <Button
+            android:id="@+id/btn_connect"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="检测连接"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            android:id="@+id/btn_upload"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="上传文件"
+            tools:ignore="HardcodedText" />
+        <Button
+            android:id="@+id/btn_getfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="获取WebDav服务器文件"
+            tools:ignore="HardcodedText" />
+    </LinearLayout>
+
+</FrameLayout>
