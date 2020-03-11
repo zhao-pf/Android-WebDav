@@ -11,6 +11,7 @@ import com.zhaopf.webdav.interfaces.Result;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,11 +20,9 @@ import java.util.List;
  */
 public class ConnectUpload extends AsyncTask<String, Void, Boolean> {
     private final Result result;
-
     ConnectUpload(Result result) {
         this.result = result;
     }
-
     @Override
     protected Boolean doInBackground(String... strings) {
         String webdavUrl = strings[0];
@@ -32,6 +31,7 @@ public class ConnectUpload extends AsyncTask<String, Void, Boolean> {
         String filePath = strings[3];
         String operation = strings[4];
         String webdavDir = "Test";//WebDav里面创建的文件夹名称，可更改
+
         Sardine sardine = new OkHttpSardine();//实例化
         sardine.setCredentials(account, password);
         if (!webdavUrl.endsWith("/")) {

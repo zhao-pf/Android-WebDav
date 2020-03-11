@@ -1,9 +1,11 @@
 package com.zhaopf.webdav;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,11 +15,21 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.leon.lfilepickerlibrary.LFilePicker;
 import com.zhaopf.webdav.interfaces.Result;
 
+import javax.security.auth.login.LoginException;
+
 public class MainActivity extends AppCompatActivity implements Button.OnClickListener, Result {
+    //请求状态码
+    private static final int PERMISSION_REQUEST_CODE = 1; //权限请求码
+    //读写权限
+    private static final String[] PERMISSIONS_STORAGE = {
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE};
     ProgressDialog progressDialog;
     private String webdavUrl, account, password, filePath, fileName;
     private EditText edtTxtUrl;
@@ -26,12 +38,20 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
     private Button btnConnect;
     private Button btnUpload;
     private Button btnGetfile;
+    private SharedPreferences sp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //获取权限
+        if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(MainActivity.this, PERMISSIONS_STORAGE, PERMISSION_REQUEST_CODE);
+        }
         initView();//初始化控件
+        showProgress();
+        connectUpload(webdavUrl, account, password, "null", "connect");//打开程序先连接
     }
 
 
@@ -47,6 +67,14 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
         btnConnect.setOnClickListener(this);
         btnUpload.setOnClickListener(this);
         btnGetfile.setOnClickListener(this);
+        //设置文本内容
+        sp = this.getSharedPreferences("config", MODE_PRIVATE);
+        webdavUrl =sp.getString("webdavUrl","https://dav.jianguoyun.com/dav/");
+        account =sp.getString("account","");
+        password =sp.getString("password","");
+        edtTxtUrl.setText(webdavUrl);
+        edtTxtAccount.setText(account);
+        edtTxtPassword.setText(password);
     }
 
     /**
@@ -59,8 +87,10 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
             assert data != null;
             String filePath = data.getStringArrayListExtra("paths").get(0);
             Log.e("filePath:", filePath);
+            showProgress();
             connectUpload(webdavUrl, account, password, filePath, "upload");
         }
+
     }
 
     @Override
@@ -81,6 +111,7 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
                 //连接
                 showProgress();
                 connectUpload(webdavUrl, account, password, "null", "connect");
+                progressDialog.dismiss();
                 break;
             case R.id.btn_upload:
                 //上传
@@ -94,13 +125,12 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
                 break;
             case R.id.btn_getfile:
                 //获取坚果云中的文件
-                showProgress();
-                connectUpload(webdavUrl, account, password, "null", "getfiles");
+                startActivity(new Intent(MainActivity.this, FileList.class));
                 break;
         }
     }
 
-    //对话框
+    //等待框
     void showProgress() {
         progressDialog = ProgressDialog.show(this, "提示", "正在进行，请稍等…", true, false, null);
     }
@@ -108,7 +138,18 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
     @Override
     public void toastResult(Boolean b) {
         progressDialog.dismiss();
-        Toast.makeText(this, b ? "成功" : "失败", Toast.LENGTH_SHORT).show();
+        if (account.equals("")||password.equals("")){
+            Toast.makeText(this, "请输入账号密码", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(this, b ? "成功" : "失败", Toast.LENGTH_SHORT).show();
+        }
+        if (b){
+            btnUpload.setEnabled(true);
+            btnGetfile.setEnabled(true);
+        }else {
+            btnUpload.setEnabled(false);
+            btnGetfile.setEnabled(false);
+        }
     }
 
     /**
@@ -120,8 +161,8 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
      *                  connect  ：验证账号密码连接
      *                  upload   ：上传文件 除了上传文件以外filePath随便给定一个值就行
      */
-    private void connectUpload(String webdavUrl, String account, String password, String filePath, String operation) {
-        new ConnectUpload(this).execute(webdavUrl, account, password, filePath, operation);
+    public void connectUpload(String webdavUrl, String account, String password, String filePath, String operation) {
+        new ConnectUpload(MainActivity.this).execute(webdavUrl, account, password, filePath, operation);
     }
 
 }

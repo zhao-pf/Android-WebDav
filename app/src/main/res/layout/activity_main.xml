@@ -45,7 +45,7 @@
             android:id="@+id/btn_connect"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="检测连接"
+            android:text="检测连接(保存)"
             tools:ignore="HardcodedText" />
 
         <Button

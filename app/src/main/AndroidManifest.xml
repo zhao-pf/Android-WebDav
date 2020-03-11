@@ -3,15 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.zhaopf.webdav">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <!--网络权限-->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 网络权限 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <!--读写权限-->
-    <!-- networkSecurityConfig 9.0以上的网络安全策略:https://developer.android.google.cn/training/articles/security-config.html-->
-    <!-- android:requestLegacyExternalStorage="true" 关闭安卓沙箱10限制:https://developer.android.com/training/data-storage/files/external-scoped?hl=zh-cn-->
-    <application
 
+    <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -22,13 +18,14 @@
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup"
         tools:targetApi="n">
+        <activity android:name=".FileList"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>
