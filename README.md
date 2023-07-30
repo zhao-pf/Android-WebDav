@@ -157,6 +157,9 @@ dependencies {
 感谢各位的阅读，因为本人学习安卓时间并不长，文章中和Demo中出现什么问题，欢迎大家及时指正。 
 欢迎大家添加我的交流群或好友技术交流,广交朋友
 交流群:
-<img src="https://files.catbox.moe/ubh2w4.png"  width="300"/>
+<br>
+<img src="https://files.catbox.moe/ubh2w4.png"  width="200"/>
+<br>
 作者微信:
-<img src="https://files.catbox.moe/bp58t6.jpg"   width="300" />
+<br>
+<img src="https://files.catbox.moe/bp58t6.jpg"   width="200" />
