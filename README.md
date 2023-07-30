@@ -155,8 +155,8 @@ dependencies {
 据我的查找国内支持 WebDAV 协议的网盘只有坚果一家，每月有 1GB 的上传流量和 3GB 的下载流量，对于我来说存储数据完全够用  
 再此之前自己写了一个我自己有需求的软件，用来备份整个文件夹的  
 感谢各位的阅读，因为本人学习安卓时间并不长，文章中和Demo中出现什么问题，欢迎大家及时指正。 
-
-作者微信:
-![bp58t6.jpg](https://files.catbox.moe/bp58t6.jpg)
+欢迎大家添加我的交流群或好友技术交流,广交朋友
 交流群:
-![ubh2w4.png](https://files.catbox.moe/ubh2w4.png)
+<img src="https://files.catbox.moe/ubh2w4.png"  width="300"/>
+作者微信:
+<img src="https://files.catbox.moe/bp58t6.jpg"   width="300" />
