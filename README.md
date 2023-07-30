@@ -156,11 +156,8 @@ dependencies {
 再此之前自己写了一个我自己有需求的软件，用来备份整个文件夹的  
 感谢各位的阅读，因为本人学习安卓时间并不长，文章中和Demo中出现什么问题，欢迎大家及时指正。   
 
-## 欢迎大家添加我的交流群或好友技术交流,广交朋友
-### 交流群:
-<br>
-<img src="https://files.catbox.moe/ubh2w4.png"  width="200"/>
-<br>
-### 我的微信:
-<br>
-<img src="https://files.catbox.moe/bp58t6.jpg"   width="200" />
+## 欢迎大家添加我的交流群或好友技术交流,广交朋友  
+### 交流群:  
+<img src="https://files.catbox.moe/ubh2w4.png"  width="200"/>  
+### 我的微信:  
+<img src="https://files.catbox.moe/bp58t6.jpg"   width="200" />  
