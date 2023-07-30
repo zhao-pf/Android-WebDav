@@ -148,9 +148,15 @@ dependencies {
 ```
 ``` !
 下图将文件列表写入适配器列表中，在子线程中无法刷新UI，子线程可以通过Handler来将UI更新操作切换到主线程中执行，具体操作看Demo
+
 ```
 ![](https://raw.githubusercontent.com/zhao-pf/zhao-pf.github.io/master/screenshots/2020/13/4.jpg)  
 ## 三、后言
 据我的查找国内支持 WebDAV 协议的网盘只有坚果一家，每月有 1GB 的上传流量和 3GB 的下载流量，对于我来说存储数据完全够用  
 再此之前自己写了一个我自己有需求的软件，用来备份整个文件夹的  
 感谢各位的阅读，因为本人学习安卓时间并不长，文章中和Demo中出现什么问题，欢迎大家及时指正。 
+
+作者微信:
+![bp58t6.jpg](https://files.catbox.moe/bp58t6.jpg)
+交流群:
+![ubh2w4.png](https://files.catbox.moe/ubh2w4.png)
